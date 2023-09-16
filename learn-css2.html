@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <!--html 주석-->
+    <style type="text/css">
+      /* css주석 */
+      /* 하위 선택자 */
+      #item-list p {
+        color: red;
+      }
+      /* ctrl + / 누르면 자동으로 주석 */
+      /* 자식 선택자 */
+      /* 겹치는 경우 밑에있는 스타일이 적용 */
+      .class-test > p {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="item-list">
+      <p>첫번째 자식 아이템1</p>
+      <p>첫번째 자식 아이템2</p>
+      <div class="class-test">
+        <p>두번째 자식 아이템1</p>
+        <p>두번째 자식 아이템2</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>그랩마켓</title>
+    <!-- css 파일로 불러오기 -->
+    <link href="index.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="header">
+      <div id="header-area">
+        <img src="images/icons/logo.png" />
+      </div>
+    </div>
+    <div id="body">
+      <div id="banner">
+        <!-- 이미지는 주로 width와 맞춰 해상도를 정함 -->
+        <img src="images/banners/banner1.png" />
+      </div>
+      <h1>판매되는 상품들</h1>
+      <div id="product-list">
+        <div class="product-card">
+          <div>
+            <!-- 많은 상품카드들이 있으므로 전부 클래스로 적용해줘야 한다 -->
+            <img class="product-image" src="images/products/basketball1.jpeg" />
+          </div>
+          <div class="product-contents">
+            <!-- span 태그는 div처럼 영역을 나눌때 사용 줄바꿈이 되지 않음 -->
+            <!-- 텍스트의 스타일을 메길때 많이 사용 div는 영역을 나눌때 많이 사용 -->
+            <span class="product-name">농구공 1호</span>
+            <span class="product-price">50000원</span>
+            <div class="product-seller">
+              <img class="product-avatar" src="images/icons/avatar.png" />
+              <span>그랩</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div>
+            <img class="product-image" src="images/products/keyboard1.jpg" />
+          </div>
+          <div class="product-contents">
+            <span class="product-name">키보드 1호</span>
+            <span class="product-price">30000원</span>
+            <div class="product-seller">
+              <img class="product-avatar" src="images/icons/avatar.png" />
+              <span>그랩</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer"></div>
+  </body>
+</html>

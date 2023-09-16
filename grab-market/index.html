@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <title>그랩마켓</title>
+    <!-- css 파일로 불러오기 -->
+    <link href="index.css" type="text/css" rel="stylesheet" />
+    <!-- Axios라는 외부 라이브러리를 이용해 통신하기 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <div id="header-area">
+        <img src="images/icons/logo.png" />
+      </div>
+    </div>
+    <div id="body">
+      <div id="banner">
+        <!-- 이미지는 주로 width와 맞춰 해상도를 정함 -->
+        <img src="images/banners/banner1.png" />
+      </div>
+      <h1>판매되는 상품들</h1>
+      <div id="product-list"></div>
+    </div>
+    <div id="footer"></div>
+  </body>
+  <!-- 주로 스크립트는 헤더에 위치하지만 document로 조작할 요소가 먼저 정의되어야 하므로 맨 뒤로 넣음 -->
+  <script>
+    // postman을 사용해 만든 mock 서버에서 products 객체 가져옴
+    axios
+      .get(
+        "https://8580b8ce-a931-470f-a899-f4e0d0090da4.mock.pstmn.io/products"
+      )
+      .then(function (result) {
+        console.log("통신 결과: ", result);
+        const products = result.data.products;
+
+        // axios 로 반환된 promise 객체는 비동기 방식이므로
+        // 서버에서 받아온 데이터로 html을 채우는 코드 역시 안쪽에 작성되어야 한다
+        let productsHtml = "";
+        for (var i = 0; i < products.length; i++) {
+          let product = products[i];
+          // +=도 사용 가능
+          productsHtml =
+            productsHtml +
+            '<div class="product-card">' +
+            "<div>" +
+            '<img class="product-image" src="' +
+            product.imageUrl +
+            '" />' +
+            "</div>" +
+            '<div class="product-contents">' +
+            '<span class="product-name">' +
+            product.name +
+            "</span>" +
+            '<span class="product-price">' +
+            product.price +
+            "원</span>" +
+            '<div class="product-seller">' +
+            '<img class="product-avatar" src="images/icons/avatar.png" />' +
+            "<span>" +
+            product.seller +
+            "</span>" +
+            "</div>" +
+            "</div>" +
+            "</div>";
+        }
+
+        //  document는 브라우저에서 실행되는 자바 스크립에서 기본적으로 제공해주는 객체
+        //  해당 객체 활용해 자바 스크립트로 html, css 조작 할 수 있다
+        // querySelector()는 id나 클래스 태그 등으로 선택 가능
+        // innerHTML 은 선택된 요소 안의 컨텐츠를 조작 할 수 있게 한다
+        // 스크립트 위치보다 조작할 요소가 나중에 나오면 찾지 못함
+        // 문자열로 할당해줘야 한다 태그들이 안쪽에서 "를 쓰면 '를 바깥에 쓰는 식으로
+        // 여러 줄 처리위해 alt 누른 후 마우스로 클릭해 여러 줄 선택해 동시에 ' 입력 가능
+        document.querySelector("#product-list").innerHTML = productsHtml;
+      })
+      .catch(function (error) {
+        console.error("error 발생: ", error);
+      });
+  </script>
+</html>

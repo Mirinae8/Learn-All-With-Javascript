@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <style>
+      .parent {
+        display: flex;
+        background-color: aqua;
+      }
+
+      .child {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        margin-right: 8px;
+        border: 1px solid black;
+      }
+
+      #child1 {
+        /* 플렉스 방향에서 기본적인 너비 */
+        /* 따로 적용이 안되면 너비나 깊이중 플렉스 방향과 일치하는 쪽으로 적용 */
+        /* 그래서 자주 사용하지는 않음 */
+        flex-basis: 200px;
+        /* flex-grow 여백을 차지하는 비율  */
+        /* 기본은 0 */
+        flex-grow: 1;
+        /* flex-shrink 는 컨테이너가 자식들보다 줄었을때 얼마나 줄일지 비율 */
+        /* 기본은 1 클수록 많이 줄어듬*/
+        flex-shrink: 1;
+      }
+      #child2 {
+        /* border처럼 한번에 여러 값 지정가능 */
+        /* grow shrink basis */
+        flex: 1 1 200px;
+      }
+      #child3 {
+        /* 1 1 auto 와 동일한 값 */
+        flex: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="parent">
+      <div id="child1" class="child">자식</div>
+      <div id="child2" class="child">자식</div>
+      <div id="child3" class="child">자식</div>
+    </div>
+  </body>
+</html>
